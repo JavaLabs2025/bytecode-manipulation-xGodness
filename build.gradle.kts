@@ -2,6 +2,12 @@ plugins {
     id("java")
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
 group = "org.itmo"
 version = "1.0"
 
