@@ -1,5 +1,7 @@
 package org.itmo.visitor;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.itmo.statistic.AggregatedStatistic;
@@ -104,7 +106,11 @@ public class MethodStatisticGatherer extends MethodVisitor {
 
     @Override
     public void visitTableSwitchInsn(int min, int max, Label dflt, Label... labels) {
-        statistic.incrementConditions(labels.length);
+        Set<Label> distinct = new HashSet<>();
+        distinct.add(dflt);
+        Collections.addAll(distinct, labels);
+
+        statistic.incrementConditions(distinct.size());
         super.visitTableSwitchInsn(min, max, dflt, labels);
     }
 

@@ -32,10 +32,10 @@ public class AggregatedStatistic {
         conditions = 0;
     }
 
-    public void merge(MethodStatistic methodStatistic) {
-        assignments += methodStatistic.getAssignments();
-        branches += methodStatistic.getBranches();
-        conditions += methodStatistic.getConditions();
+    public void merge(MethodStatistic statistic) {
+        assignments += statistic.getAssignments();
+        branches += statistic.getBranches();
+        conditions += statistic.getConditions();
     }
 
     public void merge(ClassStatistic statistic) {
